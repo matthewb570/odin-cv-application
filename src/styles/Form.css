@@ -8,3 +8,8 @@ form .input-list {
   gap: var(--input-margin-bottom);
   margin-bottom: var(--input-margin-bottom);
 }
+
+form .button-list {
+  display: flex;
+  justify-content: flex-end;
+}
