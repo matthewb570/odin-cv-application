@@ -1,0 +1,25 @@
+.form-input {
+  --input-padding: 0.625rem;
+
+  display: flex;
+  flex-direction: column;
+
+  position: relative;
+  margin-bottom: 1.563rem;
+}
+
+input {
+  height: 3.125rem;
+  border-radius: 5px;
+  border: solid black 1px;
+  padding: 0 var(--input-padding);
+}
+
+label {
+  position: absolute;
+  top: 0;
+  left: var(--input-padding);
+  transform: translateY(-50%);
+  background-color: white;
+  padding: 0.313rem;
+}
