@@ -1,5 +1,6 @@
 import { useState } from "react";
 import FormInput from "../input/FormInput";
+import Form from "./Form";
 
 export default function BasicInfoForm() {
   const [name, setName] = useState("");
@@ -7,7 +8,7 @@ export default function BasicInfoForm() {
   const [phone, setPhone] = useState("");
 
   return (
-    <form action={""} method="get">
+    <Form>
       <FormInput
         type={"text"}
         label={"Name"}
@@ -35,6 +36,6 @@ export default function BasicInfoForm() {
         placeholder={"1234567890"}
         required={false}
       />
-    </form>
+    </Form>
   );
 }
