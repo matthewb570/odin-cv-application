@@ -1,0 +1,12 @@
+.resume-page {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 3.125rem;
+
+  padding: 3.125rem 6.25rem;
+}
+
+.card {
+  flex: 1 1 62.5rem;
+}

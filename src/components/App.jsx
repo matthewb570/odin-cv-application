@@ -1,12 +1,7 @@
-import Card from "./card/Card";
-import BasicInfoForm from "./form/BasicInfoForm";
+import ResumePage from "./page/ResumePage";
 
 function App() {
-  return (
-    <Card title="Basic Information">
-      <BasicInfoForm />
-    </Card>
-  );
+  return <ResumePage />;
 }
 
 export default App;

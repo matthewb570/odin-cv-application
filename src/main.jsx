@@ -5,6 +5,7 @@ import "./styles/BasicInfoForm.css";
 import "./styles/Card.css";
 import "./styles/Form.css";
 import "./styles/FormInput.css";
+import "./styles/ResumePage.css";
 import App from "./components/App.jsx";
 
 createRoot(document.getElementById("root")).render(
