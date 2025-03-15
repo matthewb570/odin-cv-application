@@ -1,0 +1,15 @@
+.resume-display .name {
+  font-size: 5rem;
+  text-align: center;
+  margin-bottom: 0.625rem;
+}
+
+.resume-display .contact-information {
+  display: flex;
+  justify-content: center;
+}
+
+.resume-display .contact-information > :not(:last-child)::after {
+  content: "•";
+  margin: 0 0.625rem;
+}

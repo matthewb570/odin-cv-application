@@ -1,14 +1,17 @@
-import { useState } from "react";
 import FormInput from "../input/FormInput";
 import Form from "./Form";
 
-export default function BasicInfoForm() {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [phone, setPhone] = useState("");
-
+export default function BasicInfoForm({
+  name,
+  setName,
+  email,
+  setEmail,
+  phone,
+  setPhone,
+  onSubmit,
+}) {
   return (
-    <Form>
+    <Form onSubmit={onSubmit}>
       <FormInput
         type={"text"}
         label={"Name"}

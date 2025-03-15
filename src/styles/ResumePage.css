@@ -7,6 +7,7 @@
   padding: 3.125rem 6.25rem;
 }
 
-.card {
+.card,
+.resume-section {
   flex: 1 1 62.5rem;
 }

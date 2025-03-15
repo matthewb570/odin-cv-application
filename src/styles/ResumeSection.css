@@ -1,0 +1,12 @@
+.resume-section {
+  display: flex;
+  justify-content: center;
+
+  position: relative;
+}
+
+.resume-section button.edit {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
