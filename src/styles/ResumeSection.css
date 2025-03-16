@@ -1,8 +1,11 @@
 .resume-section {
   display: flex;
-  justify-content: center;
 
   position: relative;
+}
+
+.resume-section.center {
+  justify-content: center;
 }
 
 .resume-section button.edit {

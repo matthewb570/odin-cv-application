@@ -37,8 +37,9 @@ function BasicInfoResumeSection({ isInEditMode, setIsInEditMode }) {
     <ResumeSection
       isInEditMode={isInEditMode}
       setIsInEditMode={setIsInEditMode}
+      centerDisplay={true}
     >
-      <Card title="Basic Information">
+      <Card className={"form-card"} title="Basic Information">
         <BasicInfoForm
           name={name}
           setName={setName}
