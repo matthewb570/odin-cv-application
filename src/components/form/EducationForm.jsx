@@ -45,21 +45,19 @@ export default function EducationForm({
         required={true}
       />
       <FormInput
-        type={"date"}
+        type={"month"}
         label={"Attendance Start Date"}
         name={"attendanceStartDate"}
         value={educationalInstitutions[0].startDate}
         setValue={setEducationalInstitutionStartDate}
-        placeholder={"mm/dd/yyyy"}
         required={true}
       />
       <FormInput
-        type={"date"}
+        type={"month"}
         label={"Attendance End Date"}
         name={"attendanceEndDate"}
         value={educationalInstitutions[0].endDate}
         setValue={setEducationalInstitutionEndDate}
-        placeholder={"mm/dd/yyyy"}
         required={true}
       />
     </Form>

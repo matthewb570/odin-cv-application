@@ -6,8 +6,8 @@ export default function EducationDisplay({ educationalInstitutions }) {
         {educationalInstitutions.map((educationalInstitution) => (
           <div className="educational-institution">
             <div>
-              {educationalInstitution.startDate} -{" "}
-              {educationalInstitution.endDate}
+              {formatDate(educationalInstitution.startDate)} -{" "}
+              {formatDate(educationalInstitution.endDate)}
             </div>
             <div>{educationalInstitution.degreeTitle}</div>
             <div>{educationalInstitution.name}</div>
@@ -16,4 +16,9 @@ export default function EducationDisplay({ educationalInstitutions }) {
       </div>
     </div>
   );
+}
+
+function formatDate(dateString) {
+  const options = { year: "numeric", month: "long", timeZone: "GMT" };
+  return new Intl.DateTimeFormat("en-US", options).format(new Date(dateString));
 }
