@@ -7,13 +7,13 @@ export default function WorkExperienceDisplay({ jobs }) {
       <div className="jobs-list">
         {jobs.map((job) => (
           <div className="job">
+            <h3>{job.companyName}</h3>
+            <div>{job.positionTitle}</div>
+            <div>{job.jobResponsibilities}</div>
             <div>
               {DateUtils.formatDate(job.startDate)} -{" "}
               {DateUtils.formatDate(job.endDate)}
             </div>
-            <div>{job.positionTitle}</div>
-            <div>{job.companyName}</div>
-            <div>{job.jobResponsibilities}</div>
           </div>
         ))}
       </div>

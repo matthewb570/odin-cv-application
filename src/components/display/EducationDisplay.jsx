@@ -7,12 +7,12 @@ export default function EducationDisplay({ educationalInstitutions }) {
       <div className={"educational-institution-list"}>
         {educationalInstitutions.map((educationalInstitution) => (
           <div className="educational-institution">
+            <h3>{educationalInstitution.name}</h3>
+            <div>{educationalInstitution.degreeTitle}</div>
             <div>
               {DateUtils.formatDate(educationalInstitution.startDate)} -{" "}
               {DateUtils.formatDate(educationalInstitution.endDate)}
             </div>
-            <div>{educationalInstitution.degreeTitle}</div>
-            <div>{educationalInstitution.name}</div>
           </div>
         ))}
       </div>

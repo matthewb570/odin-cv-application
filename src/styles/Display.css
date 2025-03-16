@@ -18,6 +18,10 @@
   font-size: 2rem;
 }
 
+.resume-display h3 {
+  margin-bottom: 0.5rem;
+}
+
 .resume-display .educational-institution,
 .resume-display .job {
   font-size: 1.2rem;
