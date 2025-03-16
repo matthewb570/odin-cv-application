@@ -1,3 +1,5 @@
+import DateUtils from "../../utils/DateUtils";
+
 export default function EducationDisplay({ educationalInstitutions }) {
   return (
     <div className="resume-display">
@@ -6,8 +8,8 @@ export default function EducationDisplay({ educationalInstitutions }) {
         {educationalInstitutions.map((educationalInstitution) => (
           <div className="educational-institution">
             <div>
-              {formatDate(educationalInstitution.startDate)} -{" "}
-              {formatDate(educationalInstitution.endDate)}
+              {DateUtils.formatDate(educationalInstitution.startDate)} -{" "}
+              {DateUtils.formatDate(educationalInstitution.endDate)}
             </div>
             <div>{educationalInstitution.degreeTitle}</div>
             <div>{educationalInstitution.name}</div>
@@ -16,9 +18,4 @@ export default function EducationDisplay({ educationalInstitutions }) {
       </div>
     </div>
   );
-}
-
-function formatDate(dateString) {
-  const options = { year: "numeric", month: "long", timeZone: "GMT" };
-  return new Intl.DateTimeFormat("en-US", options).format(new Date(dateString));
 }

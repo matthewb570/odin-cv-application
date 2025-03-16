@@ -1,21 +1,34 @@
-import { useState } from "react";
 import Form from "./Form";
 import FormInput from "../input/FormInput";
 
-export default function WorkExperienceForm() {
-  const [companyName, setCompanyName] = useState("");
-  const [positionTitle, setPositionTitle] = useState("");
-  const [jobResponsibilities, setJobResponsibilities] = useState("");
-  const [employmentStartDate, setEmploymentStartDate] = useState("");
-  const [employmentEndDate, setEmploymentEndDate] = useState("");
+export default function WorkExperienceForm({ jobs, setJobs, onSubmit }) {
+  function setCompanyName(companyName) {
+    setJobs([{ ...jobs[0], companyName }]);
+  }
+
+  function setPositionTitle(positionTitle) {
+    setJobs([{ ...jobs[0], positionTitle }]);
+  }
+
+  function setJobResponsibilities(jobResponsibilities) {
+    setJobs([{ ...jobs[0], jobResponsibilities }]);
+  }
+
+  function setStartDate(startDate) {
+    setJobs([{ ...jobs[0], startDate }]);
+  }
+
+  function setEndDate(endDate) {
+    setJobs([{ ...jobs[0], endDate }]);
+  }
 
   return (
-    <Form>
+    <Form onSubmit={onSubmit}>
       <FormInput
         type={"text"}
         label={"Company Name"}
         name={"companyName"}
-        value={companyName}
+        value={jobs[0].companyName}
         setValue={setCompanyName}
         placeholder={"Generic Software Development Company"}
         required={true}
@@ -24,7 +37,7 @@ export default function WorkExperienceForm() {
         type={"text"}
         label={"Position Title"}
         name={"positionTitle"}
-        value={positionTitle}
+        value={jobs[0].positionTitle}
         setValue={setPositionTitle}
         placeholder={"Software Engineer"}
         required={true}
@@ -33,26 +46,26 @@ export default function WorkExperienceForm() {
         type={"textarea"}
         label={"Job Responsibilities"}
         name={"jobResponsibilities"}
-        value={jobResponsibilities}
+        value={jobs[0].jobResponsibilities}
         setValue={setJobResponsibilities}
         placeholder={"Time on the job includes..."}
         required={true}
       />
       <FormInput
-        type={"date"}
+        type={"month"}
         label={"Employment Start Date"}
         name={"employmentStartDate"}
-        value={employmentStartDate}
-        setValue={setEmploymentStartDate}
+        value={jobs[0].startDate}
+        setValue={setStartDate}
         placeholder={"mm/dd/yyyy"}
         required={true}
       />
       <FormInput
-        type={"date"}
+        type={"month"}
         label={"Employment End Date"}
         name={"employmentEndDate"}
-        value={employmentEndDate}
-        setValue={setEmploymentEndDate}
+        value={jobs[0].endDate}
+        setValue={setEndDate}
         placeholder={"mm/dd/yyyy"}
         required={true}
       />

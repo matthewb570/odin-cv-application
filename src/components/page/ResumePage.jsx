@@ -6,10 +6,13 @@ import EducationForm from "../form/EducationForm";
 import WorkExperienceForm from "../form/WorkExperienceForm";
 import ResumeSection from "../section/ResumeSection";
 import EducationDisplay from "../display/EducationDisplay";
+import WorkExperienceDisplay from "../display/WorkExperienceDisplay";
 
 export default function ResumePage() {
   const [isBasicInfoInEditMode, setIsBasicInfoInEditMode] = useState(true);
   const [isEducationInEditMode, setIsEducationInEditMode] = useState(true);
+  const [isWorkExperienceInEditMode, setIsWorkExperienceInEditMode] =
+    useState(true);
 
   return (
     <div className="resume-page">
@@ -21,9 +24,10 @@ export default function ResumePage() {
         isInEditMode={isEducationInEditMode}
         setIsInEditMode={setIsEducationInEditMode}
       />
-      <Card title="Work Experience">
-        <WorkExperienceForm />
-      </Card>
+      <WorkExperienceResumeSection
+        isInEditMode={isWorkExperienceInEditMode}
+        setIsInEditMode={setIsWorkExperienceInEditMode}
+      />
     </div>
   );
 }
@@ -75,6 +79,34 @@ function EducationResumeSection({ isInEditMode, setIsInEditMode }) {
       <EducationDisplay
         educationalInstitutions={educationalInstitutions}
       ></EducationDisplay>
+    </ResumeSection>
+  );
+}
+
+function WorkExperienceResumeSection({ isInEditMode, setIsInEditMode }) {
+  const [jobs, setJobs] = useState([
+    {
+      companyName: "",
+      positionTitle: "",
+      jobResponsibilities: "",
+      startDate: "",
+      endDate: "",
+    },
+  ]);
+
+  return (
+    <ResumeSection
+      isInEditMode={isInEditMode}
+      setIsInEditMode={setIsInEditMode}
+    >
+      <Card title="Work Experience">
+        <WorkExperienceForm
+          jobs={jobs}
+          setJobs={setJobs}
+          onSubmit={() => setIsInEditMode(!isInEditMode)}
+        />
+      </Card>
+      <WorkExperienceDisplay jobs={jobs}></WorkExperienceDisplay>
     </ResumeSection>
   );
 }
