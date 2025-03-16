@@ -13,3 +13,11 @@
   content: "•";
   margin: 0 0.625rem;
 }
+
+.resume-display h2 {
+  font-size: 2rem;
+}
+
+.resume-display .educational-institution {
+  font-size: 1.2rem;
+}
