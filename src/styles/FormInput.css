@@ -1,4 +1,5 @@
-.form-input {
+.form-input,
+.form-select {
   --input-padding: 0.625rem;
 
   display: flex;
@@ -7,7 +8,8 @@
   position: relative;
 }
 
-input {
+input,
+select {
   height: 3.125rem;
   border-radius: 5px;
   border: solid black 1px;

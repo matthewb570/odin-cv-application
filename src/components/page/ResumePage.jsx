@@ -7,6 +7,7 @@ import WorkExperienceForm from "../form/WorkExperienceForm";
 import ResumeSection from "../section/ResumeSection";
 import EducationDisplay from "../display/EducationDisplay";
 import WorkExperienceDisplay from "../display/WorkExperienceDisplay";
+import { v4 as uuidv4 } from "uuid";
 
 export default function ResumePage() {
   const [isBasicInfoInEditMode, setIsBasicInfoInEditMode] = useState(true);
@@ -61,7 +62,7 @@ function BasicInfoResumeSection({ isInEditMode, setIsInEditMode }) {
 
 function EducationResumeSection({ isInEditMode, setIsInEditMode }) {
   const [educationalInstitutions, setEducationalInstitutions] = useState([
-    { name: "", degreeTitle: "", startDate: "", endDate: "" },
+    { name: "", degreeTitle: "", startDate: "", endDate: "", id: uuidv4() },
   ]);
 
   return (
