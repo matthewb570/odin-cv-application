@@ -24,3 +24,7 @@ label {
   background-color: white;
   padding: 0.313rem;
 }
+
+.form-select select {
+  background-color: white;
+}

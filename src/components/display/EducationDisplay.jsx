@@ -6,7 +6,10 @@ export default function EducationDisplay({ educationalInstitutions }) {
       <h2>Education</h2>
       <div className={"educational-institution-list"}>
         {educationalInstitutions.map((educationalInstitution) => (
-          <div className="educational-institution">
+          <div
+            className="educational-institution"
+            key={educationalInstitution.id}
+          >
             <h3>{educationalInstitution.name}</h3>
             <div>{educationalInstitution.degreeTitle}</div>
             <div>

@@ -2,6 +2,7 @@ import Form from "./Form";
 import FormInput from "../input/FormInput";
 import { useState } from "react";
 import FormSelect from "../input/FormSelect";
+import { v4 as uuidv4 } from "uuid";
 
 export default function EducationForm({
   educationalInstitutions,
@@ -52,24 +53,64 @@ export default function EducationForm({
     setEducationalInstitutions(updatedEducationalInstitutions);
   }
 
+  function handleAddClick() {
+    const newEducationalInstitution = {
+      name: "",
+      degreeTitle: "",
+      startDate: "",
+      endDate: "",
+      id: uuidv4(),
+    };
+    setEducationalInstitutions([
+      ...educationalInstitutions,
+      newEducationalInstitution,
+    ]);
+    setSelectedEducationalInstitutionId(newEducationalInstitution.id);
+  }
+
+  function handleDeleteClick() {
+    const updatedEducationalInstitutions = [...educationalInstitutions];
+    updatedEducationalInstitutions.splice(
+      selectedEducationalInstitutionIndex,
+      1,
+    );
+    setEducationalInstitutions(updatedEducationalInstitutions);
+    setSelectedEducationalInstitutionId(
+      selectedEducationalInstitutionIndex === educationalInstitutions.length - 1
+        ? updatedEducationalInstitutions[
+            updatedEducationalInstitutions.length - 1
+          ].id
+        : educationalInstitutions[selectedEducationalInstitutionIndex + 1].id,
+    );
+  }
+
   return (
     <Form onSubmit={onSubmit}>
-      <FormSelect
-        label={""}
-        name={"selectedSchool"}
-        value={selectedEducationalInstitutionId}
-        setValue={setSelectedEducationalInstitutionId}
-        required={false}
-        options={educationalInstitutions.map((educationalInstitution) => {
-          return {
-            value: educationalInstitution.id,
-            displayName: educationalInstitution.name,
-          };
-        })}
-      />
+      <div className="form-row">
+        <FormSelect
+          label={"Educational Institution"}
+          name={"selectedSchool"}
+          value={selectedEducationalInstitutionId}
+          setValue={setSelectedEducationalInstitutionId}
+          required={false}
+          options={educationalInstitutions.map((educationalInstitution) => {
+            return {
+              value: educationalInstitution.id,
+              displayName: educationalInstitution.name,
+            };
+          })}
+          className={"fill"}
+        />
+        <button type="button" onClick={handleAddClick}>
+          Add
+        </button>
+        <button type="button" onClick={handleDeleteClick}>
+          Delete
+        </button>
+      </div>
       <FormInput
         type={"text"}
-        label={"Educational Institution"}
+        label={"Educational Institution Name"}
         name={"schoolName"}
         value={selectedEducationalInstitution.name}
         setValue={setEducationalInstitutionName}

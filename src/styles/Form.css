@@ -9,6 +9,16 @@ form .input-list {
   margin-bottom: var(--input-margin-bottom);
 }
 
+form .form-row {
+  display: flex;
+  align-items: center;
+  gap: 0.938rem;
+}
+
+form .form-row .fill {
+  flex: 1 0 auto;
+}
+
 form .button-list {
   display: flex;
   justify-content: flex-end;

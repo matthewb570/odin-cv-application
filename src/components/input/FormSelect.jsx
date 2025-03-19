@@ -5,9 +5,10 @@ export default function FormSelect({
   setValue,
   required,
   options,
+  className,
 }) {
   return (
-    <div className="form-select">
+    <div className={`form-select ${className}`}>
       <label htmlFor={name}>{label}</label>
       <select
         name={name}
@@ -17,7 +18,9 @@ export default function FormSelect({
         onChange={(event) => setValue(event.target.value)}
       >
         {options.map((option) => (
-          <option value={option.value}>{option.displayName}</option>
+          <option value={option.value} key={option.value}>
+            {option.displayName}
+          </option>
         ))}
       </select>
     </div>
