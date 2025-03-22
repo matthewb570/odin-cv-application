@@ -62,9 +62,7 @@ function BasicInfoResumeSection({ isInEditMode, setIsInEditMode }) {
 }
 
 function EducationResumeSection({ isInEditMode, setIsInEditMode }) {
-  const [educationalInstitutions, setEducationalInstitutions] = useState([
-    new School(),
-  ]);
+  const [schools, setSchools] = useState([new School()]);
 
   return (
     <ResumeSection
@@ -73,14 +71,12 @@ function EducationResumeSection({ isInEditMode, setIsInEditMode }) {
     >
       <Card title="Educational Experience">
         <EducationForm
-          educationalInstitutions={educationalInstitutions}
-          setEducationalInstitutions={setEducationalInstitutions}
+          schools={schools}
+          setSchools={setSchools}
           onSubmit={() => setIsInEditMode(!isInEditMode)}
         />
       </Card>
-      <EducationDisplay
-        educationalInstitutions={educationalInstitutions}
-      ></EducationDisplay>
+      <EducationDisplay educationalInstitutions={schools}></EducationDisplay>
     </ResumeSection>
   );
 }

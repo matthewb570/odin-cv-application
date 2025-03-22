@@ -4,77 +4,53 @@ import { useState } from "react";
 import FormSelect from "../input/FormSelect";
 import School from "../../objects/School";
 
-export default function EducationForm({
-  educationalInstitutions,
-  setEducationalInstitutions,
-  onSubmit,
-}) {
-  const [
-    selectedEducationalInstitutionId,
-    setSelectedEducationalInstitutionId,
-  ] = useState(educationalInstitutions[0].id);
+export default function EducationForm({ schools, setSchools, onSubmit }) {
+  const [selectedSchoolId, setSelectedSchoolId] = useState(schools[0].id);
 
-  const selectedEducationalInstitutionIndex = educationalInstitutions.findIndex(
-    (educationalInstitution) =>
-      educationalInstitution.id === selectedEducationalInstitutionId,
+  const selectedSchoolIndex = schools.findIndex(
+    (school) => school.id === selectedSchoolId,
   );
 
-  const selectedEducationalInstitution =
-    educationalInstitutions[selectedEducationalInstitutionIndex];
+  const selectedSchool = schools[selectedSchoolIndex];
 
-  function setEducationalInstitutionName(name) {
-    const updatedEducationalInstitutions = [...educationalInstitutions];
-    updatedEducationalInstitutions[selectedEducationalInstitutionIndex].name =
-      name;
-    setEducationalInstitutions(updatedEducationalInstitutions);
+  function setSchoolName(name) {
+    const updatedSchools = [...schools];
+    updatedSchools[selectedSchoolIndex].name = name;
+    setSchools(updatedSchools);
   }
 
-  function setEducationalInstitutionDegreeTitle(degreeTitle) {
-    const updatedEducationalInstitutions = [...educationalInstitutions];
-    updatedEducationalInstitutions[
-      selectedEducationalInstitutionIndex
-    ].degreeTitle = degreeTitle;
-    setEducationalInstitutions(updatedEducationalInstitutions);
+  function setSchoolDegreeTitle(degreeTitle) {
+    const updatedSchools = [...schools];
+    updatedSchools[selectedSchoolIndex].degreeTitle = degreeTitle;
+    setSchools(updatedSchools);
   }
 
-  function setEducationalInstitutionStartDate(startDate) {
-    const updatedEducationalInstitutions = [...educationalInstitutions];
-    updatedEducationalInstitutions[
-      selectedEducationalInstitutionIndex
-    ].startDate = startDate;
-    setEducationalInstitutions(updatedEducationalInstitutions);
+  function setSchoolStartDate(startDate) {
+    const updatedSchools = [...schools];
+    updatedSchools[selectedSchoolIndex].startDate = startDate;
+    setSchools(updatedSchools);
   }
 
-  function setEducationalInstitutionEndDate(endDate) {
-    const updatedEducationalInstitutions = [...educationalInstitutions];
-    updatedEducationalInstitutions[
-      selectedEducationalInstitutionIndex
-    ].endDate = endDate;
-    setEducationalInstitutions(updatedEducationalInstitutions);
+  function setSchoolEndDate(endDate) {
+    const updatedSchools = [...schools];
+    updatedSchools[selectedSchoolIndex].endDate = endDate;
+    setSchools(updatedSchools);
   }
 
   function handleAddClick() {
-    const newEducationalInstitution = new School();
-    setEducationalInstitutions([
-      ...educationalInstitutions,
-      newEducationalInstitution,
-    ]);
-    setSelectedEducationalInstitutionId(newEducationalInstitution.id);
+    const newSchool = new School();
+    setSchools([...schools, newSchool]);
+    setSelectedSchoolId(newSchool.id);
   }
 
   function handleDeleteClick() {
-    const updatedEducationalInstitutions = [...educationalInstitutions];
-    updatedEducationalInstitutions.splice(
-      selectedEducationalInstitutionIndex,
-      1,
-    );
-    setEducationalInstitutions(updatedEducationalInstitutions);
-    setSelectedEducationalInstitutionId(
-      selectedEducationalInstitutionIndex === educationalInstitutions.length - 1
-        ? updatedEducationalInstitutions[
-            updatedEducationalInstitutions.length - 1
-          ].id
-        : educationalInstitutions[selectedEducationalInstitutionIndex + 1].id,
+    const updatedSchools = [...schools];
+    updatedSchools.splice(selectedSchoolIndex, 1);
+    setSchools(updatedSchools);
+    setSelectedSchoolId(
+      selectedSchoolIndex === schools.length - 1
+        ? updatedSchools[updatedSchools.length - 1].id
+        : schools[selectedSchoolIndex + 1].id,
     );
   }
 
@@ -84,13 +60,13 @@ export default function EducationForm({
         <FormSelect
           label={"Educational Institution"}
           name={"selectedSchool"}
-          value={selectedEducationalInstitutionId}
-          setValue={setSelectedEducationalInstitutionId}
+          value={selectedSchoolId}
+          setValue={setSelectedSchoolId}
           required={false}
-          options={educationalInstitutions.map((educationalInstitution) => {
+          options={schools.map((school) => {
             return {
-              value: educationalInstitution.id,
-              displayName: educationalInstitution.name,
+              value: school.id,
+              displayName: school.name,
             };
           })}
           className={"fill"}
@@ -106,8 +82,8 @@ export default function EducationForm({
         type={"text"}
         label={"Educational Institution Name"}
         name={"schoolName"}
-        value={selectedEducationalInstitution.name}
-        setValue={setEducationalInstitutionName}
+        value={selectedSchool.name}
+        setValue={setSchoolName}
         placeholder={"Northwest Institute of Technology"}
         required={true}
       />
@@ -115,8 +91,8 @@ export default function EducationForm({
         type={"text"}
         label={"Degree Title"}
         name={"degree"}
-        value={selectedEducationalInstitution.degreeTitle}
-        setValue={setEducationalInstitutionDegreeTitle}
+        value={selectedSchool.degreeTitle}
+        setValue={setSchoolDegreeTitle}
         placeholder={"Software Engineering"}
         required={true}
       />
@@ -124,16 +100,16 @@ export default function EducationForm({
         type={"month"}
         label={"Attendance Start Date"}
         name={"attendanceStartDate"}
-        value={selectedEducationalInstitution.startDate}
-        setValue={setEducationalInstitutionStartDate}
+        value={selectedSchool.startDate}
+        setValue={setSchoolStartDate}
         required={true}
       />
       <FormInput
         type={"month"}
         label={"Attendance End Date"}
         name={"attendanceEndDate"}
-        value={selectedEducationalInstitution.endDate}
-        setValue={setEducationalInstitutionEndDate}
+        value={selectedSchool.endDate}
+        setValue={setSchoolEndDate}
         required={true}
       />
     </Form>
