@@ -2,7 +2,7 @@ import Form from "./Form";
 import FormInput from "../input/FormInput";
 import { useState } from "react";
 import FormSelect from "../input/FormSelect";
-import { v4 as uuidv4 } from "uuid";
+import School from "../../objects/School";
 
 export default function EducationForm({
   educationalInstitutions,
@@ -54,13 +54,7 @@ export default function EducationForm({
   }
 
   function handleAddClick() {
-    const newEducationalInstitution = {
-      name: "",
-      degreeTitle: "",
-      startDate: "",
-      endDate: "",
-      id: uuidv4(),
-    };
+    const newEducationalInstitution = new School();
     setEducationalInstitutions([
       ...educationalInstitutions,
       newEducationalInstitution,

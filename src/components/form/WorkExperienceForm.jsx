@@ -1,8 +1,8 @@
 import Form from "./Form";
 import FormInput from "../input/FormInput";
 import FormSelect from "../input/FormSelect";
-import { v4 as uuidv4 } from "uuid";
 import { useState } from "react";
+import Job from "../../objects/Job";
 
 export default function WorkExperienceForm({ jobs, setJobs, onSubmit }) {
   const [selectedJobId, setSelectedJobId] = useState(jobs[0].id);
@@ -40,14 +40,7 @@ export default function WorkExperienceForm({ jobs, setJobs, onSubmit }) {
   }
 
   function handleAddClick() {
-    const newJob = {
-      companyName: "",
-      positionTitle: "",
-      jobResponsibilities: "",
-      startDate: "",
-      endDate: "",
-      id: uuidv4(),
-    };
+    const newJob = new Job();
     setJobs([...jobs, newJob]);
     setSelectedJobId(newJob.id);
   }
