@@ -6,7 +6,7 @@ export default function WorkExperienceDisplay({ jobs }) {
       <h2>Work Experience</h2>
       <div className="jobs-list">
         {jobs.map((job) => (
-          <div className="job">
+          <div className="job" key={job.id}>
             <h3>{job.companyName}</h3>
             <div>{job.positionTitle}</div>
             <div>{job.jobResponsibilities}</div>
