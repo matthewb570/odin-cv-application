@@ -92,6 +92,7 @@ function WorkExperienceResumeSection({ isInEditMode, setIsInEditMode }) {
       jobResponsibilities: "",
       startDate: "",
       endDate: "",
+      id: uuidv4(),
     },
   ]);
 
