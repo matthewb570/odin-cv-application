@@ -39,7 +39,6 @@ export default function EducationForm({ schools, setSchools, onSubmit }) {
     const newIsStartDateValid =
       !StringUtils.isEmpty(startDate) &&
       (!StringUtils.isEmpty(endDate) ? startDate <= endDate : true);
-    console.log(startDate, endDate, newIsStartDateValid);
     setIsStartDateValid(newIsStartDateValid);
     return newIsStartDateValid;
   }
@@ -159,7 +158,7 @@ export default function EducationForm({ schools, setSchools, onSubmit }) {
       </div>
       <FormInput
         type={"text"}
-        label={"Educational Institution Name"}
+        label={"Educational Institution Name *"}
         name={"schoolName"}
         value={selectedSchool.name}
         setValue={setSchoolName}
@@ -169,7 +168,7 @@ export default function EducationForm({ schools, setSchools, onSubmit }) {
       />
       <FormInput
         type={"text"}
-        label={"Degree Title"}
+        label={"Degree Title *"}
         name={"degree"}
         value={selectedSchool.degreeTitle}
         setValue={setSchoolDegreeTitle}
@@ -179,7 +178,7 @@ export default function EducationForm({ schools, setSchools, onSubmit }) {
       />
       <FormInput
         type={"month"}
-        label={"Attendance Start Date"}
+        label={"Attendance Start Date *"}
         name={"attendanceStartDate"}
         value={selectedSchool.startDate}
         setValue={setSchoolStartDate}
@@ -190,7 +189,7 @@ export default function EducationForm({ schools, setSchools, onSubmit }) {
       />
       <FormInput
         type={"month"}
-        label={"Attendance End Date"}
+        label={"Attendance End Date *"}
         name={"attendanceEndDate"}
         value={selectedSchool.endDate}
         setValue={setSchoolEndDate}
