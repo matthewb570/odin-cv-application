@@ -2,7 +2,7 @@ export default function FormSelect({
   label,
   name,
   value,
-  setValue,
+  onChange,
   required,
   options,
   className,
@@ -15,7 +15,7 @@ export default function FormSelect({
         id={name}
         value={value}
         required={required}
-        onChange={(event) => setValue(event.target.value)}
+        onChange={(event) => onChange(event.target.value)}
       >
         {options.map((option) => (
           <option value={option.value} key={option.value}>

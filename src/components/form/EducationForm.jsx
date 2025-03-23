@@ -3,15 +3,83 @@ import FormInput from "../input/FormInput";
 import { useState } from "react";
 import FormSelect from "../input/FormSelect";
 import School from "../../objects/School";
+import StringUtils from "../../utils/StringUtils";
 
 export default function EducationForm({ schools, setSchools, onSubmit }) {
   const [selectedSchoolId, setSelectedSchoolId] = useState(schools[0].id);
+
+  const [isNameValid, setIsNameValid] = useState(undefined);
+  const [isDegreeTitleValid, setIsDegreeTitleValid] = useState(undefined);
+  const [isStartDateValid, setIsStartDateValid] = useState(undefined);
+  const [isEndDateValid, setIsEndDateValid] = useState(undefined);
 
   const selectedSchoolIndex = schools.findIndex(
     (school) => school.id === selectedSchoolId,
   );
 
   const selectedSchool = schools[selectedSchoolIndex];
+
+  function validateName(name) {
+    const newIsNameValid = !StringUtils.isEmpty(name);
+    setIsNameValid(newIsNameValid);
+    return newIsNameValid;
+  }
+
+  function validateDegreeTitle(degreeTitle) {
+    const newIsDegreeTitleValid = !StringUtils.isEmpty(degreeTitle);
+    setIsDegreeTitleValid(newIsDegreeTitleValid);
+    return newIsDegreeTitleValid;
+  }
+
+  function validateStartDate(startDate, endDate, doValidateEndDate) {
+    if (doValidateEndDate && !StringUtils.isEmpty(endDate)) {
+      validateEndDate(endDate);
+    }
+
+    const newIsStartDateValid =
+      !StringUtils.isEmpty(startDate) &&
+      (!StringUtils.isEmpty(endDate) ? startDate <= endDate : true);
+    console.log(startDate, endDate, newIsStartDateValid);
+    setIsStartDateValid(newIsStartDateValid);
+    return newIsStartDateValid;
+  }
+
+  function validateEndDate(endDate, startDate, doValidateStartDate) {
+    if (doValidateStartDate && !StringUtils.isEmpty(startDate)) {
+      validateStartDate(startDate, endDate, false);
+    }
+
+    const newIsEndDateValid =
+      !StringUtils.isEmpty(endDate) &&
+      (!StringUtils.isEmpty(startDate) ? endDate >= startDate : true);
+    setIsEndDateValid(newIsEndDateValid);
+    return newIsEndDateValid;
+  }
+
+  function validateForm() {
+    const isNameValid = validateName(selectedSchool.name);
+    const isDegreeTitleValid = validateDegreeTitle(selectedSchool.degreeTitle);
+    const isStartDateValid = validateStartDate(
+      selectedSchool.startDate,
+      selectedSchool.endDate,
+      false,
+    );
+    const isEndDateValid = validateEndDate(
+      selectedSchool.endDate,
+      selectedSchool.startDate,
+      false,
+    );
+    return (
+      isNameValid && isDegreeTitleValid && isStartDateValid && isEndDateValid
+    );
+  }
+
+  function resetValidity() {
+    setIsNameValid(undefined);
+    setIsDegreeTitleValid(undefined);
+    setIsStartDateValid(undefined);
+    setIsEndDateValid(undefined);
+  }
 
   function setSchoolName(name) {
     const updatedSchools = [...schools];
@@ -38,12 +106,16 @@ export default function EducationForm({ schools, setSchools, onSubmit }) {
   }
 
   function handleAddClick() {
-    const newSchool = new School();
-    setSchools([...schools, newSchool]);
-    setSelectedSchoolId(newSchool.id);
+    if (validateForm()) {
+      resetValidity();
+      const newSchool = new School();
+      setSchools([...schools, newSchool]);
+      setSelectedSchoolId(newSchool.id);
+    }
   }
 
   function handleDeleteClick() {
+    resetValidity();
     const updatedSchools = [...schools];
     updatedSchools.splice(selectedSchoolIndex, 1);
     setSchools(updatedSchools);
@@ -54,14 +126,21 @@ export default function EducationForm({ schools, setSchools, onSubmit }) {
     );
   }
 
+  function handleSelectChange(value) {
+    if (validateForm()) {
+      resetValidity();
+      setSelectedSchoolId(value);
+    }
+  }
+
   return (
-    <Form onSubmit={onSubmit}>
+    <Form validationFunction={validateForm} onSubmit={onSubmit}>
       <div className="form-row">
         <FormSelect
           label={"Educational Institution"}
           name={"selectedSchool"}
           value={selectedSchoolId}
-          setValue={setSelectedSchoolId}
+          onChange={handleSelectChange}
           required={false}
           options={schools.map((school) => {
             return {
@@ -85,7 +164,8 @@ export default function EducationForm({ schools, setSchools, onSubmit }) {
         value={selectedSchool.name}
         setValue={setSchoolName}
         placeholder={"Northwest Institute of Technology"}
-        required={true}
+        isValid={isNameValid}
+        validationFunction={validateName}
       />
       <FormInput
         type={"text"}
@@ -94,7 +174,8 @@ export default function EducationForm({ schools, setSchools, onSubmit }) {
         value={selectedSchool.degreeTitle}
         setValue={setSchoolDegreeTitle}
         placeholder={"Software Engineering"}
-        required={true}
+        isValid={isDegreeTitleValid}
+        validationFunction={validateDegreeTitle}
       />
       <FormInput
         type={"month"}
@@ -102,7 +183,10 @@ export default function EducationForm({ schools, setSchools, onSubmit }) {
         name={"attendanceStartDate"}
         value={selectedSchool.startDate}
         setValue={setSchoolStartDate}
-        required={true}
+        isValid={isStartDateValid}
+        validationFunction={(startDate) =>
+          validateStartDate(startDate, selectedSchool.endDate, true)
+        }
       />
       <FormInput
         type={"month"}
@@ -110,7 +194,10 @@ export default function EducationForm({ schools, setSchools, onSubmit }) {
         name={"attendanceEndDate"}
         value={selectedSchool.endDate}
         setValue={setSchoolEndDate}
-        required={true}
+        isValid={isEndDateValid}
+        validationFunction={(endDate) =>
+          validateEndDate(endDate, selectedSchool.startDate, true)
+        }
       />
     </Form>
   );
