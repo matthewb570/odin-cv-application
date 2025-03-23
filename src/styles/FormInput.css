@@ -28,3 +28,19 @@ label {
 .form-select select {
   background-color: white;
 }
+
+.form-input.invalid input {
+  border-color: red;
+}
+
+.form-input.invalid label {
+  color: red;
+}
+
+.form-input.valid input {
+  border-color: green;
+}
+
+.form-input.valid label {
+  color: green;
+}

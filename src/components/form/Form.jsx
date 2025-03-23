@@ -1,11 +1,17 @@
-export default function Form({ onSubmit, children }) {
+export default function Form({ validationFunction, onSubmit, children }) {
+  function handleSubmit(event) {
+    event.preventDefault();
+
+    if (validationFunction()) {
+      onSubmit();
+    }
+  }
+
   return (
-    <form action={""} method="get">
+    <form onSubmit={(event) => handleSubmit(event)}>
       <div className="input-list">{children}</div>
       <div className="button-list">
-        <button type="button" onClick={onSubmit}>
-          Submit
-        </button>
+        <button type="submit">Submit</button>
       </div>
     </form>
   );
