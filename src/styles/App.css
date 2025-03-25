@@ -61,3 +61,8 @@ button.icon.wrench {
 button.icon.wrench:hover {
   background-color: goldenrod;
 }
+
+button.icon.disabled,
+button.icon.disabled:hover {
+  background-color: gray;
+}

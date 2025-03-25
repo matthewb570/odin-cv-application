@@ -181,8 +181,9 @@ export default function WorkExperienceForm({ jobs, setJobs, onSubmit }) {
         <button
           aria-label="delete"
           type="button"
-          className="icon trash"
+          className={`icon trash ${jobs.length <= 1 ? "disabled" : ""}`}
           onClick={handleDeleteClick}
+          disabled={jobs.length <= 1}
         ></button>
       </div>
       <FormInput

@@ -158,8 +158,9 @@ export default function EducationForm({ schools, setSchools, onSubmit }) {
         <button
           aria-label="delete"
           type="button"
-          className="icon trash"
+          className={`icon trash ${schools.length <= 1 ? "disabled" : ""}`}
           onClick={handleDeleteClick}
+          disabled={schools.length <= 1}
         ></button>
       </div>
       <FormInput
