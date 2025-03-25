@@ -9,13 +9,13 @@ export default function ResumeSection({
       className={`resume-section ${centerDisplay || isInEditMode ? "center" : ""}`}
     >
       {isInEditMode ? children[0] : children[1]}
+
       <button
-        className="edit"
+        className="icon wrench edit"
+        aria-label="edit"
         hidden={isInEditMode}
         onClick={() => setIsInEditMode(!isInEditMode)}
-      >
-        Edit
-      </button>
+      ></button>
     </div>
   );
 }

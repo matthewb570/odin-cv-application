@@ -172,12 +172,18 @@ export default function WorkExperienceForm({ jobs, setJobs, onSubmit }) {
           })}
           className={"fill"}
         />
-        <button type="button" onClick={handleAddClick}>
-          Add
-        </button>
-        <button type="button" onClick={handleDeleteClick}>
-          Delete
-        </button>
+        <button
+          aria-label="add"
+          type="button"
+          className="icon plus"
+          onClick={handleAddClick}
+        ></button>
+        <button
+          aria-label="delete"
+          type="button"
+          className="icon trash"
+          onClick={handleDeleteClick}
+        ></button>
       </div>
       <FormInput
         type={"text"}
