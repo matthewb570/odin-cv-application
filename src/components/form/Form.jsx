@@ -11,7 +11,9 @@ export default function Form({ validationFunction, onSubmit, children }) {
     <form onSubmit={(event) => handleSubmit(event)}>
       <div className="input-list">{children}</div>
       <div className="button-list">
-        <button type="submit">Submit</button>
+        <button type="submit" className="submit">
+          Submit
+        </button>
       </div>
     </form>
   );

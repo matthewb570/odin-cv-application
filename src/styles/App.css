@@ -5,3 +5,20 @@
 body {
   margin: 0 0 1rem 0;
 }
+
+button {
+  border: 0;
+  padding: 1rem 1.5rem;
+  border-radius: 7px;
+  font-size: 1rem;
+  color: white;
+  font-weight: 700;
+}
+
+.submit {
+  background-color: forestgreen;
+}
+
+.edit {
+  background-color: goldenrod;
+}
