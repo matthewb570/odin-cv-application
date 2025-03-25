@@ -9,6 +9,7 @@ import EducationDisplay from "../display/EducationDisplay";
 import WorkExperienceDisplay from "../display/WorkExperienceDisplay";
 import Job from "../../objects/Job";
 import School from "../../objects/School";
+import Header from "../header/Header";
 
 export default function ResumePage() {
   const [isBasicInfoInEditMode, setIsBasicInfoInEditMode] = useState(true);
@@ -16,8 +17,15 @@ export default function ResumePage() {
   const [isWorkExperienceInEditMode, setIsWorkExperienceInEditMode] =
     useState(true);
 
+  function onEditAll() {
+    setIsBasicInfoInEditMode(true);
+    setIsEducationInEditMode(true);
+    setIsWorkExperienceInEditMode(true);
+  }
+
   return (
     <div className="resume-page">
+      <Header onEditAll={onEditAll} />
       <BasicInfoResumeSection
         isInEditMode={isBasicInfoInEditMode}
         setIsInEditMode={setIsBasicInfoInEditMode}

@@ -1,0 +1,28 @@
+header {
+  flex: 1 1 100%;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  box-shadow: var(--standard-box-shadow);
+  padding: 0 1rem;
+
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background-color: white;
+}
+
+header > * {
+  flex: 1;
+}
+
+header h1 {
+  text-align: center;
+}
+
+header .button-list {
+  display: flex;
+  justify-content: right;
+}

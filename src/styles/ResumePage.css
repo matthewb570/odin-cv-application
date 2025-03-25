@@ -3,8 +3,6 @@
   justify-content: center;
   flex-wrap: wrap;
   gap: 3.125rem;
-
-  padding: 3.125rem 20rem;
 }
 
 .card,

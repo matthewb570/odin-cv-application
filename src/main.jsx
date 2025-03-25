@@ -6,6 +6,7 @@ import "./styles/Card.css";
 import "./styles/Display.css";
 import "./styles/Form.css";
 import "./styles/FormInput.css";
+import "./styles/Header.css";
 import "./styles/ResumePage.css";
 import "./styles/ResumeSection.css";
 import App from "./components/App.jsx";
