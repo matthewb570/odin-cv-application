@@ -11,7 +11,7 @@ export default function FormInput({
   isValid,
 }) {
   function handleChange(value) {
-    if (!isValid && validationFunction) {
+    if (isValid === false && validationFunction) {
       validationFunction(value);
     }
 
