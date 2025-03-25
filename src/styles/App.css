@@ -1,9 +1,13 @@
+@import url(https://fonts.bunny.net/css?family=roboto:400,400i,700);
+
 :root {
   --standard-box-shadow: 0 0 10px rgb(0 0 0 / 0.38);
 
   --plus-icon: url("../assets/plus.svg");
   --trash-icon: url("../assets/trash-can-outline.svg");
   --wrench-icon: url("../assets/wrench-outline.svg");
+
+  font-family: "Roboto", sans-serif;
 }
 
 body {
