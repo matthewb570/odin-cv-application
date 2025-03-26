@@ -4,14 +4,26 @@
   margin-bottom: 0.625rem;
 }
 
-.resume-display .contact-information {
-  display: flex;
-  justify-content: center;
+@media (width <= 1200px) {
+  .resume-display .name {
+    font-size: 4rem;
+  }
+
+  .resume-display .contact-information {
+    text-align: center;
+  }
 }
 
-.resume-display .contact-information > :not(:last-child)::after {
-  content: "•";
-  margin: 0 0.625rem;
+@media (width > 1200px) {
+  .resume-display .contact-information {
+    display: flex;
+    justify-content: center;
+  }
+
+  .resume-display .contact-information > :not(:last-child)::after {
+    content: "•";
+    margin: 0 0.625rem;
+  }
 }
 
 .resume-display h2 {

@@ -5,6 +5,12 @@
   margin: 0 20rem;
 }
 
+@media (width <= 1200px) {
+  .resume-section {
+    margin: 0 1rem;
+  }
+}
+
 .resume-section.center {
   justify-content: center;
 }

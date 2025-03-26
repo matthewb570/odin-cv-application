@@ -16,10 +16,14 @@ form .form-row {
 }
 
 form .form-row .fill {
-  flex: 1 0 auto;
+  flex: 1;
 }
 
 form .button-list {
   display: flex;
   justify-content: flex-end;
+}
+
+form select {
+  width: 100%;
 }

@@ -26,3 +26,9 @@ header .button-list {
   display: flex;
   justify-content: right;
 }
+
+@media (width <= 1200px) {
+  header h1 {
+    text-align: left;
+  }
+}

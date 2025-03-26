@@ -5,6 +5,12 @@
   gap: 3.125rem;
 }
 
+@media (width <= 1200px) {
+  .resume-page {
+    gap: 2rem;
+  }
+}
+
 .card,
 .resume-section {
   flex: 1 1 62.5rem;
