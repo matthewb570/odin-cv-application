@@ -41,8 +41,11 @@ export default function WorkExperienceForm({ jobs, setJobs, onSubmit }) {
       validateEndDate(endDate);
     }
 
+    const dateRegex = new RegExp("^[0-9]{4}-(0[1-9]{1}|1[0-2]{1})$");
+
     const newIsStartDateValid =
       !StringUtils.isEmpty(startDate) &&
+      dateRegex.test(startDate) &&
       (!StringUtils.isEmpty(endDate) ? startDate <= endDate : true);
     setIsStartDateValid(newIsStartDateValid);
     return newIsStartDateValid;
@@ -53,8 +56,11 @@ export default function WorkExperienceForm({ jobs, setJobs, onSubmit }) {
       validateStartDate(startDate, endDate, false);
     }
 
+    const dateRegex = new RegExp("^[0-9]{4}-(0[1-9]{1}|1[0-2]{1})$");
+
     const newIsEndDateValid =
       !StringUtils.isEmpty(endDate) &&
+      dateRegex.test(endDate) &&
       (!StringUtils.isEmpty(startDate) ? endDate >= startDate : true);
     setIsEndDateValid(newIsEndDateValid);
     return newIsEndDateValid;
@@ -222,6 +228,7 @@ export default function WorkExperienceForm({ jobs, setJobs, onSubmit }) {
         name={"employmentStartDate"}
         value={jobs[selectedJobIndex].startDate}
         setValue={setStartDate}
+        placeholder={"yyyy-mm"}
         isValid={isStartDateValid}
         validationFunction={(startDate) =>
           validateStartDate(startDate, jobs[selectedJobIndex].endDate, true)
@@ -233,6 +240,7 @@ export default function WorkExperienceForm({ jobs, setJobs, onSubmit }) {
         name={"employmentEndDate"}
         value={jobs[selectedJobIndex].endDate}
         setValue={setEndDate}
+        placeholder={"yyyy-mm"}
         isValid={isEndDateValid}
         validationFunction={(endDate) =>
           validateEndDate(endDate, jobs[selectedJobIndex].startDate, true)
